@@ -11,35 +11,37 @@
 </head>
 <body>
     <div class="aurora-mesh"></div>
+	
+<nav class="nav-bar sticky top-0 z-50 bg-green/500 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+        <span class="text-xl font-black tracking-tighter uppercase shrink-0">
+            Anim<span class="text-glow">2D</span>
+        </span>
 
-    <nav class="nav-bar">
-        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <span class="text-xl font-black tracking-tighter uppercase shrink-0">
-                Anim<span class="text-glow">2D</span>
-            </span>
+        <div class="hidden md:flex flex-1 justify-center gap-10">
+            <a href=index.html" class="nav-link active-link">Home</a>
+            <a href="About.html" class="nav-link">About</a>
+            <a href="Software.html" class="nav-link">Software</a>
+            <a href="Showcase.html" class="nav-link">Showcase</a>
+            <a href="Line Art.html" class="nav-link">Line Art</a>
+            <a href="Motion.html" class="nav-link">Motion</a>
+        </div>
 
-            <div class="hidden md:flex flex-1 justify-center gap-10">
-                <a href="index.html" class="nav-link active-link">Home</a>
-                <a href="About.html" class="nav-link">About</a>
-                <a href="Software.html" class="nav-link">Software</a>
-                <a href="Showcase.html" class="nav-link">Showcase</a>
-                <a href="Line Art.html" class="nav-link">Line Art</a>
-                <a href="Motion.html" class="nav-link">Motion</a>
-            </div>
-
-            <div class="nav-actions shrink-0">
+        <div class="flex items-center gap-4">
+            <div class="nav-actions hidden md:flex shrink-0">
                 <div id="logged-out-UI" class="flex gap-4">
                     <button class="signin" id="navSignIn">Sign In</button>
                     <button class="get-started" id="navGetStarted">Get Started</button>
                 </div>
-                <div id="logged-in-UI" style="display: none; align-items: center; gap: 15px;">
-                    <span id="user-display-name" style="font-weight: 600; color: #fff;"></span>
-                    <button id="logout-btn" class="signin" style="min-width: 80px; height: 30px; font-size: 0.6rem;">Log Out</button>
-                </div>
             </div>
-        </div> 
-        
-        <div id="mobile-menu" class="hidden flex-col bg-black/95 border-b border-white/10 px-8 py-6 space-y-4 md:hidden">
+
+            <button id="menu-btn" class="md:hidden text-white text-3xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden flex-col bg-green/500 border-b border-white/10 px-8 py-10 space-y-5 md:hidden w-full">
         <a href="index.html" class="nav-link block">Home</a>
         <a href="About.html" class="nav-link block">About</a>
         <a href="Software.html" class="nav-link block">Software</a>
@@ -47,35 +49,56 @@
         <a href="Line Art.html" class="nav-link block">Line Art</a>
         <a href="Motion.html" class="nav-link block">Motion</a>
         <hr class="border-white/10">
-        <button class="signin w-full text-left py-2">Sign In</button>
+        <button class="signin w-full py-2">Sign In</button>
         <button class="get-started w-full py-3 mt-2">Get Started</button>
     </div>
 </nav>
-    </nav>
 
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="login-container">
-                <div class="text-center mb-8">
-                    <h2 class="text-2xl font-black uppercase">Welcome Back</h2>
-                    <p class="text-sm text-gray-500">Log in to access your account.</p>
-                </div>
-                <form id="loginForm">
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" id="loginEmail" placeholder="name@company.com" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-continue">Log In</button>
-                </form>
+    <div id="authModal" class="modal" style="display: none; align-items: center; justify-content: center;">
+    <div class="modal-content" style="position: relative;">
+        <span class="close-btn" style="position: absolute; right: 20px; top: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+        
+        <div id="login-container">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black uppercase">Welcome Back</h2>
+                <p class="text-sm text-gray-500">Log in to access your account.</p>
             </div>
+            <form id="loginForm">
+                <div class="input-group mb-4">
+                    <label class="block text-xs uppercase font-bold mb-1">Email Address</label>
+                    <input type="email" id="loginEmail" class="w-full p-2 bg-black/20 border border-white/10 rounded" placeholder="name@company.com" required>
+                </div>
+                <div class="input-group mb-6">
+                    <label class="block text-xs uppercase font-bold mb-1">Password</label>
+                    <input type="password" id="loginPassword" class="w-full p-2 bg-black/20 border border-white/10 rounded" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-continue w-full py-3 bg-white text-black font-bold uppercase rounded">Log In</button>
+            </form>
+        </div>
+
+        <div id="register-container" style="display: none;">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black uppercase">Join Anim2D</h2>
+                <p class="text-sm text-gray-500">Create your account to get started.</p>
+            </div>
+            <form id="registerForm">
+                <div class="input-group mb-4">
+                    <label class="block text-xs uppercase font-bold mb-1">Full Name</label>
+                    <input type="text" id="regName" class="w-full p-2 bg-black/20 border border-white/10 rounded" placeholder="Your Name" required>
+                </div>
+                <div class="input-group mb-4">
+                    <label class="block text-xs uppercase font-bold mb-1">Email</label>
+                    <input type="email" id="regEmail" class="w-full p-2 bg-black/20 border border-white/10 rounded" placeholder="email@example.com" required>
+                </div>
+                <div class="input-group mb-6">
+                    <label class="block text-xs uppercase font-bold mb-1">Password</label>
+                    <input type="password" id="regPassword" class="w-full p-2 bg-black/20 border border-white/10 rounded" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-continue w-full py-3 bg-white text-black font-bold uppercase rounded">Create Account</button>
+            </form>
         </div>
     </div>
-
+</div>
     <header class="w-full pt-16 pb-10">
         <div class="banner-container">
             <video class="w-full h-full object-cover" autoplay muted loop playsinline>
@@ -147,7 +170,7 @@
                 <p class="text-white/40 text-sm mt-4">Empowering artists to bring their static visions into dynamic motion.</p>
             </div>
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link active-link">Home</a>
                 <a href="About.html" class="nav-link">About</a>
                 <a href="Software.html" class="nav-link">Software</a>
                 <a href="Showcase.html" class="nav-link">Showcase</a>
@@ -183,8 +206,8 @@
         const bttButton = document.getElementById("backToTop");
         window.onscroll = () => { bttButton.style.display = (window.scrollY > 300) ? "flex" : "none"; };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-
-        const menuBtn = document.getElementById('menu-btn');
+		
+		const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
 menuBtn.addEventListener('click', () => {
@@ -195,7 +218,4 @@ menuBtn.addEventListener('click', () => {
     </script>
     <script src="script.js"></script>
 </body>
-
 </html>
-
-
