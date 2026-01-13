@@ -80,6 +80,18 @@
                 </div>
             </div>
         </div> 
+		
+		<div id="mobile-menu" class="hidden flex-col bg-black/95 border-b border-white/10 px-8 py-6 space-y-4 md:hidden">
+        <a href="index.html" class="nav-link block">Home</a>
+        <a href="About.html" class="nav-link block">About</a>
+        <a href="Software.html" class="nav-link block">Software</a>
+        <a href="Showcase.html" class="nav-link block">Showcase</a>
+        <a href="Line Art.html" class="nav-link block">Line Art</a>
+        <a href="Motion.html" class="nav-link block">Motion</a>
+        <hr class="border-white/10">
+        <button class="signin w-full text-left py-2">Sign In</button>
+        <button class="get-started w-full py-3 mt-2">Get Started</button>
+    </div>
     </nav>
 	
 	<div id="authModal" class="modal">
@@ -239,10 +251,20 @@
         const bttButton = document.getElementById("backToTop");
         window.onscroll = () => { bttButton.style.display = (window.scrollY > 300) ? "flex" : "none"; };
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+		const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuBtn.addEventListener('click', () => {
+    // This toggles the 'hidden' class on and off
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+});
     </script>
 	<script src="script.js"></script>
 </body>
 
 </html>
+
 
 
